@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function loadData() {
+            var nama = localStorage.getItem('nama');
+            var tujuan = localStorage.getItem('tujuan');
+            var tiket = localStorage.getItem('tiket');
+            var member = localStorage.getItem('member');
+            var harga = localStorage.getItem('harga');
+            var subtotal = localStorage.getItem('subtotal');
+            var diskon = localStorage.getItem('diskon');
+            var totalBayar = localStorage.getItem('totalBayar');
+            var money = localStorage.getItem('money');
+            var kembalian = money - totalBayar;
+            if(kembalian < 0){
+                kembalian = ('Kurang duitnnya');
+            }
+
+            document.getElementById('nama').innerText = nama;
+            document.getElementById('tujuan').innerText = tujuan;
+            document.getElementById('tiket').innerText = tiket;
+            document.getElementById('member').innerText = member;
+            document.getElementById('harga').innerText = harga;
+            document.getElementById('subtotal').innerText = subtotal;
+            document.getElementById('diskon').innerText = diskon;
+            document.getElementById('totalBayar').innerText = totalBayar;
+            document.getElementById('money').innerText = money;
+            document.getElementById('kembalian').innerText = kembalian;
+
+        }
+
+        function kembali() {
+            window.location.href = "Tugas1.html";
+        }
+    </script>
+</head>
+
+<body onload="loadData()">
+    <center>
+        <table border="1">
+            <tr>
+                <td><img src="Picture1.png"></td>
+                <td>
+                    <h1>Travel Igasar Pindad Bandung</h1>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h3>Bukti Pembayaran</h3>
+                </td>
+            </tr>
+            <td>Nama Penumpang</td>
+            <td id="nama"></td>
+            </tr>
+            <tr>
+                <td>Tujuan</td>
+                <td id="tujuan"></td>
+            </tr>
+            <tr>
+                <td>Jumlah Tiket</td>
+                <td id="tiket"></td>
+            </tr>
+            <tr>
+                <td>Member</td>
+                <td id="member"></td>
+            </tr>
+            <tr>
+                <td>Harga Tiket</td>
+                <td id="harga"></td>
+            </tr>
+            <tr>
+                <td>Sub Total</td>
+                <td id="subtotal"></td>
+            </tr>
+            <tr>
+                <td>Diskon</td>
+                <td id="diskon"></td>
+            </tr>
+            <tr>
+                <td>Total Bayar</td>
+                <td id="totalBayar"></td>
+            </tr>
+            <tr>
+                <td>Dibayarkan</td>
+                <td id="money"></td>
+            </tr>
+            <tr>
+                <td>Kembalian</td>
+                <td id="kembalian"></td>
+            </tr>
+        </table>
+        <form>
+            <input type="button" value="Kembali" onclick="kembali()">
+        </form>
+    </center>
+</body>
+
+</html>

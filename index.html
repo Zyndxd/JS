@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Travel Booking</title>
+    <script>
+        function hitung() {
+            var nama = document.fform.nama.value;
+            var tujuan = document.fform.Tujuan.value;
+            var Tiket = parseInt(document.fform.tiket.value);
+            var Harga = 0;
+            var memberElement = document.querySelector('input[name="member"]:checked');
+            member = memberElement ? memberElement.value : "Bukan Member";
+            localStorage.setItem('member', member);
+
+            if (tujuan == 'Jogjakarta') {
+                Harga = 320000;
+            } else if (tujuan == 'Surabaya') {
+                Harga = 540000;
+            } else if (tujuan == 'Semarang') {
+                Harga = 240000;
+            }
+
+
+            document.fform.pharga.value = Harga;
+
+
+            var subtotal = Harga * Tiket;
+            document.fform.total.value = subtotal;
+            localStorage.setItem('tiket', Tiket);
+            localStorage.setItem('subtotal', subtotal);
+            
+            var diskon = 0;
+            if (member === 'Gold') {
+                diskon = subtotal * 0.20;
+            } else if (member === 'Silver') {
+                diskon = subtotal * 0.10;
+            }
+            localStorage.setItem('diskon', (diskon / subtotal) * 100);
+
+            document.fform.diskon.value = diskon;
+
+
+            var totalBayar = subtotal - diskon;
+            document.fform.bayar.value = totalBayar;
+            localStorage.setItem('totalBayar', totalBayar);
+
+
+
+            localStorage.setItem('nama', nama);
+            localStorage.setItem('Tujuan', Tujuan);
+            localStorage.setItem('harga', Harga);
+        }
+
+        function uang() {
+            var money = prompt('Masukkan jumlah uang yang akan dibayar:', '');
+            if (money === null || money.trim() === '') {
+                alert('Silakan isi jumlah uang yang akan dibayar');
+                return;
+            }
+
+            money = parseInt(money);
+            if (isNaN(money)) {
+                alert('Masukkan angka yang valid');
+                return;
+            }
+
+
+            localStorage.setItem('money', money);
+
+            window.location.href = "tabel2.html";
+        }
+
+    </script>
+</head>
+
+<body>
+    <form name="fform">
+        <table border='1' width=100% align='center' cellpadding="7">
+            <tr>
+                <td colspan='2'>
+                    <table border='1' align='center'>
+                        <tr>
+                            <td>
+                                <img src='Picture1.png' alt="Logo Travel">
+                            </td>
+                            <td>Travel Igasar Pindad Bandung</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td width=50%>
+                    <table border='1' align='center' cellpadding="7">
+                        <tr>
+                            <td colspan='3'>Data Penumpang</td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='nama' size='11'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tujuan</td>
+                            <td>:</td>
+                            <td>
+                                <select name='Tujuan' size='1'>
+                                    <option value='Jogjakarta'>Jogjakarta</option>
+                                    <option value='Surabaya'>Surabaya</option>
+                                    <option value='Semarang'>Semarang</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Tiket</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='tiket' size='5'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Member</td>
+                            <td>:</td>
+                            <td>
+                                <input type='radio' name='member' value='Gold'>Gold
+                                <input type='radio' name='member' value='Silver'>Silver
+                                <input type='radio' name='member' value='Bukan Member'>Bukan Member
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td width=50%>
+                    <table border='1' align='center' cellpadding="7">
+                        <tr>
+                            <td colspan='3'>Data Pembayaran</td>
+                        </tr>
+                        <tr>
+                            <td>Harga Tiket</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='pharga' size='5' disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sub Total</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='total' size='5' disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Diskon</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='diskon' size='5' disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total Bayar</td>
+                            <td>:</td>
+                            <td>
+                                <input type='text' name='bayar' size='5' disabled>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan='3' align='center'>
+                    <input type='button' value='Hitung' onclick="hitung()">
+                    <input type="button" value='Bayar' onclick="uang()">
+                    <input type='reset' value='Ulang'>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
