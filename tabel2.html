@@ -5,7 +5,7 @@
     <script>
         function loadData() {
             var nama = localStorage.getItem('nama');
-            var tujuan = localStorage.getItem('tujuan');
+            var Tujuan = localStorage.getItem('Tujuan');
             var tiket = localStorage.getItem('tiket');
             var member = localStorage.getItem('member');
             var harga = localStorage.getItem('harga');
@@ -19,7 +19,7 @@
             }
 
             document.getElementById('nama').innerText = nama;
-            document.getElementById('tujuan').innerText = tujuan;
+            document.getElementById('Tujuan').innerText = Tujuan;
             document.getElementById('tiket').innerText = tiket;
             document.getElementById('member').innerText = member;
             document.getElementById('harga').innerText = harga;
@@ -32,7 +32,7 @@
         }
 
         function kembali() {
-            window.location.href = "Tugas1.html";
+            window.location.href = "index.html";
         }
     </script>
 </head>
@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td>Tujuan</td>
-                <td id="tujuan"></td>
+                <td id="Tujuan"></td>
             </tr>
             <tr>
                 <td>Jumlah Tiket</td>
